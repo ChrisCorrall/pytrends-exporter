@@ -30,7 +30,7 @@ def process_keywords():
 
 
     else:
-        return render_template("form-with-date.html")
+        return render_template("form.html")
 
 
 

@@ -15,10 +15,16 @@ def process_keywords():
     if request.method == 'POST':
         input = request.form
 
+        start_date = input["start-date"]
+        end_date = input["end-date"]
+        timeframe = start_date + " " + end_date
+
+        print(timeframe)
+
         keyword_list = input["keywords"].split(",")
         name_of_file = keyword_list[0] + keyword_list[-1] + ".csv"
 
-        payload_df = pytrend_payload(keyword_list, name_of_file)
+        payload_df = pytrend_payload(keyword_list, name_of_file, timeframe)
         return send_file(name_of_file, attachment_filename = name_of_file, as_attachment = True)
 
 
@@ -28,11 +34,11 @@ def process_keywords():
 
 
 
-def pytrend_payload(keywords, filename):
+def pytrend_payload(keywords, filename, timeframe):
     if len(keywords)<=100:
         data = []
         for kw in keywords:
-            payload = pytrends.build_payload([kw], cat=0, timeframe='today 3-m', geo='GB', gprop='')
+            payload = pytrends.build_payload([kw], cat=0, timeframe= timeframe, geo='GB', gprop='')
             data.append(pytrends.interest_over_time().drop('isPartial', axis=1))
 
         df = pd.DataFrame(index=data[0].index)

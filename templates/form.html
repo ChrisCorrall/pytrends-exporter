@@ -1,16 +1,23 @@
 <head>
   <title> Bulk Export Google Trends Data </title>
+  <style>
+  input {
+    margin: 5px;
+  }
+  </style>
 </head>
 <body>
-<h1> Pytrends Exporter </h1>
+<h1> Google Trends Bulk Exporter </h1>
 <div>
   <p> This is a super simple tool for bulk exporting data from Google Trends. </p>
   <p> If you're interested, it uses <a href="https://pypi.org/project/pytrends/">this python module</a>.</p>
   </p>
+  <p> If it breaks when you press submit, just hit back. </p>
+  <p> If you are inputting keywords with no Google Trends volume at all, it will crash.</p>
 </div>
   <form action = "/interest-over-time" method="POST">
 
-    <textarea name="keywords" rows="25" cols="30">Paste your keywords in here, seperated by commas.</textarea>
+    <textarea name="keywords" rows="25" cols="30">Paste your keywords in here, separated by commas.</textarea>
     <br>
     <label for="dates">Dates:</label>
     <input type="date" id="start-date" name="start-date">

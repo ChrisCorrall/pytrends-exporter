@@ -5,6 +5,8 @@ from pytrends.request import TrendReq
 
 app = Flask(__name__)
 
+app.config['DEBUG'] = True
+
 
 pytrends = TrendReq(hl='en-GB', tz=212)
 

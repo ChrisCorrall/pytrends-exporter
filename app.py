@@ -21,7 +21,9 @@ def process_keywords():
 
         print(timeframe)
 
-        keyword_list = input["keywords"].split(",")
+        keyword_list = input["keywords"].replace('\r','').replace('\n','').split(",")
+        print(input["keywords"])
+        print(keyword_list)
         name_of_file = keyword_list[0] + keyword_list[-1] + ".csv"
 
         payload_df = pytrend_payload(keyword_list, name_of_file, timeframe)
